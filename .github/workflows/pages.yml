@@ -23,12 +23,39 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Prepare site files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          ZIP_FILE=$(ls AXIS_BAY_FullSite_Wix_v*.zip 2>/dev/null | sort -V | tail -n 1 || true)
+          if [ -n "$ZIP_FILE" ]; then
+            echo "Using uploaded FullSite zip: $ZIP_FILE"
+            rm -rf extracted
+            mkdir -p extracted
+            unzip -q "$ZIP_FILE" -d extracted
+            SITE_ROOT=$(find extracted -mindepth 1 -maxdepth 1 -type d | head -n 1)
+            if [ -z "$SITE_ROOT" ]; then
+              echo "No site folder found in zip." >&2
+              exit 1
+            fi
+            cp -a "$SITE_ROOT"/. dist/
+            rm -rf dist/wix-pages dist/rule-sources
+          else
+            echo "No FullSite zip found. Deploying repository files directly."
+            shopt -s nullglob
+            cp -a *.html *.xml *.txt *.webmanifest assets rules dist/ 2>/dev/null || true
+          fi
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: dist
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
