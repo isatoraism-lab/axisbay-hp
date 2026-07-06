@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AXIS BAYの全体・職業・犯罪・イベントルールを確認できるルールセンターです。">
+  <meta name="theme-color" content="#061522">
+  <title>ルール｜AXIS BAY</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .rules-grid{grid-template-columns:1fr!important}.rule-card{max-width:100%}.rule-card summary:after{content:'全文表示中';float:right;color:var(--accent);font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:3px 9px}.rule-card[open] summary:after{content:'全文表示中'}.rule-body{font-size:1rem}.rule-body h4{font-size:1.16rem}.rule-body li{line-height:1.8}.page-hero{padding:78px 0 46px}.breadcrumbs{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);margin-bottom:18px}.breadcrumbs a{color:var(--accent);text-decoration:none}.rule-note{margin-top:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand-mark">AB</span><span>AXIS BAY<small>ROLEPLAY SERVER</small></span></a>
+    <button class="menu" type="button" aria-label="メニューを開く">☰</button>
+    <nav class="links" aria-label="主要メニュー">
+      <a href="index.html">ホーム</a>
+      <a href="index.html#city">街紹介</a>
+      <a href="rules.html">ルール</a>
+      <a href="index.html#join">参加へ</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="index.html">ホーム</a><span>/</span><span>ルール</span></div>
+      <span class="eyebrow">RULE CENTER</span>
+      <h1>ルール</h1>
+      <p class="lead">AXIS BAYの全体・職業・犯罪・イベントルールを、検索しながら確認できます。省略表示ではなく、各ルール本文を展開した状態で表示します。</p>
+    </div>
+  </section>
+  <section class="section alt" id="rules">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">SEARCH ALL RULES</span>
+        <h2>全ルールを横断検索。</h2>
+        <p>例：松葉杖、ROB、営業時間、汚職、ヘリ、白市民カード、島取り、エアドロップ</p>
+        <p class="rule-note">このページはGitHub Pages版の初期再現です。v4.6の個別ページ形式へ順次寄せていきます。</p>
+      </div>
+      <div class="tool-row">
+        <input class="search" id="ruleSearch" type="search" placeholder="キーワードを入力">
+        <span class="pill" id="ruleCount">12件</span>
+      </div>
+      <div class="alert warn"><strong>重要：</strong> 詳細な裁定や個別相談は、Discordやゲーム内呼び出しではなく、六法のチケットから運営へ連絡してください。</div>
+      <div class="card-grid rules-grid" id="ruleList"></div>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="container footer-row"><span>© AXIS BAY</span><span>GitHub Pages / Static Site</span></div></footer>
+<script src="assets/app.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.rule-card').forEach(function(card){ card.open = true; });
+    var search = document.getElementById('ruleSearch');
+    if (search) search.addEventListener('input', function(){ setTimeout(function(){ document.querySelectorAll('.rule-card').forEach(function(card){ card.open = true; }); }, 0); });
+  });
+</script>
+</body>
+</html>
