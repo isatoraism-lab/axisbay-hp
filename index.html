@@ -7,6 +7,9 @@
   <meta name="theme-color" content="#061522">
   <title>AXIS BAY 公式サイト</title>
   <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .rules-grid{grid-template-columns:1fr!important}.rule-card{max-width:100%}.rule-card summary:after{content:'全文表示中';float:right;color:var(--accent);font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:3px 9px}.rule-card[open] summary:after{content:'全文表示中'}.rule-body{font-size:1rem}.rule-body h4{font-size:1.16rem}.rule-body li{line-height:1.8}.rule-open-note{margin-top:12px;color:var(--muted)}
+  </style>
 </head>
 <body>
 <header class="header">
@@ -16,7 +19,7 @@
     <nav class="links" aria-label="主要メニュー">
       <a href="#home">ホーム</a>
       <a href="#city">街紹介</a>
-      <a href="#rules">ルール</a>
+      <a href="rules.html">ルール</a>
       <a href="#join">参加へ</a>
     </nav>
   </div>
@@ -31,7 +34,7 @@
         <p class="lead">AXIS BAYは、職業RP・店舗経営・公務員・医療・犯罪RP・ギャング抗争・街イベントを通して、住民一人ひとりの物語を作るFiveMロールプレイサーバーです。</p>
         <div class="actions">
           <a class="button" href="#join">参加方法を見る</a>
-          <a class="button sub" href="#rules">ルールを確認</a>
+          <a class="button sub" href="rules.html">ルールを確認</a>
           <a class="button sub" href="#city">街紹介を見る</a>
         </div>
       </div>
@@ -71,7 +74,9 @@
       <div class="section-head">
         <span class="eyebrow">RULE CENTER</span>
         <h2>ルール</h2>
-        <p>検索欄にキーワードを入れると、関連するルールだけを絞り込めます。各カードを開くと詳細を確認できます。</p>
+        <p>現在は省略表示ではなく、各ルール本文を最初から展開して確認できる形へ変更しています。</p>
+        <p class="rule-open-note">より読み込む場合は、専用のルールページでも同じ内容を確認できます。</p>
+        <div class="actions"><a class="button" href="rules.html">ルール専用ページを開く</a></div>
       </div>
       <div class="tool-row">
         <input class="search" id="ruleSearch" type="search" placeholder="例：白市民カード、ホワイトジョブコイン、島取り、エアドロップ、警察、ギャング">
@@ -104,5 +109,12 @@
 
 <footer class="footer"><div class="container footer-row"><span>© AXIS BAY</span><span>GitHub Pages / Static Site</span></div></footer>
 <script src="assets/app.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.rule-card').forEach(function(card){ card.open = true; });
+    var search = document.getElementById('ruleSearch');
+    if (search) search.addEventListener('input', function(){ setTimeout(function(){ document.querySelectorAll('.rule-card').forEach(function(card){ card.open = true; }); }, 0); });
+  });
+</script>
 </body>
 </html>
