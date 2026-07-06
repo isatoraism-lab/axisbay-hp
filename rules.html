@@ -8,7 +8,7 @@
   <title>ルール｜AXIS BAY</title>
   <link rel="stylesheet" href="assets/style.css">
   <style>
-    .rules-grid{grid-template-columns:1fr!important}.rule-card{max-width:100%}.rule-card summary:after{content:'全文表示中';float:right;color:var(--accent);font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:3px 9px}.rule-card[open] summary:after{content:'全文表示中'}.rule-body{font-size:1rem}.rule-body h4{font-size:1.16rem}.rule-body li{line-height:1.8}.page-hero{padding:78px 0 46px}.breadcrumbs{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);margin-bottom:18px}.breadcrumbs a{color:var(--accent);text-decoration:none}.rule-note{margin-top:12px;color:var(--muted)}
+    .rules-grid{grid-template-columns:1fr!important}.rule-card{max-width:100%}.rule-card summary:after{content:'全文表示中';float:right;color:var(--accent);font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:3px 9px}.rule-card[open] summary:after{content:'全文表示中'}.rule-body{font-size:1rem}.rule-body h4{font-size:1.16rem}.rule-body li{line-height:1.8}.page-hero{padding:78px 0 46px}.breadcrumbs{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);margin-bottom:18px}.breadcrumbs a{color:var(--accent);text-decoration:none}.rule-note{margin-top:12px;color:var(--muted)}.rule-link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.rule-link{display:block;text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:18px;background:linear-gradient(160deg,rgba(16,54,80,.82),rgba(7,24,39,.88));box-shadow:var(--shadow)}.rule-link strong{display:block;color:var(--text);font-size:1.06rem}.rule-link span{display:block;color:var(--muted);font-size:.9rem;margin-top:6px}@media(max-width:900px){.rule-link-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -30,7 +30,21 @@
       <div class="breadcrumbs"><a href="index.html">ホーム</a><span>/</span><span>ルール</span></div>
       <span class="eyebrow">RULE CENTER</span>
       <h1>ルール</h1>
-      <p class="lead">AXIS BAYの全体・職業・犯罪・イベントルールを、検索しながら確認できます。省略表示ではなく、各ルール本文を展開した状態で表示します。</p>
+      <p class="lead">AXIS BAYの全体・職業・犯罪・イベントルールを、検索しながら確認できます。v4.6に近づけるため、個別ルールページも順次作成しています。</p>
+      <div class="rule-link-grid">
+        <a class="rule-link" href="rules/general.html"><strong>全体ルール</strong><span>白市民カード、ジョブ、不動産、禁止行為</span></a>
+        <a class="rule-link" href="rules/streaming.html"><strong>配信ルール</strong><span>配信・動画投稿・情報管理</span></a>
+        <a class="rule-link" href="rules/safety.html"><strong>荒らし対応ルール</strong><span>通報・証拠・運営対応</span></a>
+        <a class="rule-link" href="rules/business.html"><strong>企業共通ルール</strong><span>店舗運営・従業員・権限</span></a>
+        <a class="rule-link" href="rules/shops.html"><strong>販売店ルール</strong><span>販売・割引・在庫管理</span></a>
+        <a class="rule-link" href="rules/mechanic.html"><strong>メカニックルール</strong><span>修理・整備・カスタム</span></a>
+        <a class="rule-link" href="rules/police.html"><strong>警察ルール</strong><span>捜査・逮捕・押収・犯罪対応</span></a>
+        <a class="rule-link" href="rules/ems.html"><strong>救急隊ルール</strong><span>救命・治療・搬送</span></a>
+        <a class="rule-link" href="rules/private-doctor.html"><strong>個人医ルール</strong><span>個人医の活動条件</span></a>
+        <a class="rule-link" href="rules/crime.html"><strong>犯罪ルール</strong><span>開始条件・禁止事項・ROB</span></a>
+        <a class="rule-link" href="rules/crime-events.html"><strong>犯罪イベントルール</strong><span>島取り・エアドロップ</span></a>
+        <a class="rule-link" href="rules/gang.html"><strong>ギャングルール</strong><span>縄張り・抗争・フロント企業</span></a>
+      </div>
     </div>
   </section>
   <section class="section alt" id="rules">
@@ -38,8 +52,7 @@
       <div class="section-head">
         <span class="eyebrow">SEARCH ALL RULES</span>
         <h2>全ルールを横断検索。</h2>
-        <p>例：松葉杖、ROB、営業時間、汚職、ヘリ、白市民カード、島取り、エアドロップ</p>
-        <p class="rule-note">このページはGitHub Pages版の初期再現です。v4.6の個別ページ形式へ順次寄せていきます。</p>
+        <p>例：松葉杖、ROB、白市民カード、島取り、エアドロップ、警察、ギャング</p>
       </div>
       <div class="tool-row">
         <input class="search" id="ruleSearch" type="search" placeholder="キーワードを入力">
