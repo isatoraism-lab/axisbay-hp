@@ -48,61 +48,11 @@ jobs:
             cp -a *.html *.xml *.txt *.webmanifest assets rules dist/ 2>/dev/null || true
           fi
 
-      - name: Apply public links and join copy
+      - name: Apply AXIS BAY public patches
         shell: bash
         run: |
           set -euo pipefail
-          python3 <<'PY'
-          from pathlib import Path
-
-          discord = "https://discord.gg/dCHCAY6DbZ"
-          x_url = "https://x.com/AxisBay89986"
-          root = Path("dist")
-
-          config = root / "assets/js/config.js"
-          if config.exists():
-              text = config.read_text(encoding="utf-8")
-              text = text.replace('discordUrl: "DISCORD_INVITE_URL_HERE"', f'discordUrl: "{discord}"')
-              text = text.replace('discordUrl: "https://disboard.org/ja/server/1216271639952752691"', f'discordUrl: "{discord}"')
-              text = text.replace('discordUrl: "https://discord.gg/Mt4EVcdEDQ"', f'discordUrl: "{discord}"')
-              text = text.replace('discordUrl: "https://discord.com/invite/Mt4EVcdEDQ"', f'discordUrl: "{discord}"')
-              text = text.replace('discordUrl: "https://discord.gg/dCHCAY6DbZ"', f'discordUrl: "{discord}"')
-              text = text.replace('xUrl: "X_URL_HERE"', f'xUrl: "{x_url}"')
-              text = text.replace('xUrl: "https://x.com/AxisBay89986"', f'xUrl: "{x_url}"')
-              config.write_text(text, encoding="utf-8")
-
-          replacements = {
-              "AXIS BAYへの参加方法、最低限のルール、Disboard経由でDiscordへ参加する流れ。": "AXIS BAYへの参加方法、最低限のルール、Discord参加申請の流れ。",
-              "AXIS BAYへの参加方法、最低限のルール、Discord申請の流れ。": "AXIS BAYへの参加方法、最低限のルール、Discord参加申請の流れ。",
-              "参加条件と最低限のルールを確認して、DisboardページからDiscordへ参加し、申請してください。": "参加条件と最低限のルールを確認して、Discordから申請してください。",
-              "参加条件と最低限のルールを確認して、Discordから申請してください。": "参加条件と最低限のルールを確認して、Discordから申請してください。",
-              "最低限の確認を終えたら、DisboardページからDiscordへ参加し、参加申請へ進めます。": "最低限の確認を終えたら、Discordから参加申請へ進めます。",
-              "最低限の確認を終えたら、Discordから参加申請へ進めます。": "最低限の確認を終えたら、Discordから参加申請へ進めます。",
-              "<h3>DisboardからDiscordへ参加</h3>": "<h3>Discordへ参加</h3>",
-              "<h3>Discordへ参加</h3>": "<h3>Discordへ参加</h3>",
-              "<h3>Discord内の案内と最低限ルールを確認</h3>": "<h3>Discordの案内と最低限ルールを確認</h3>",
-              "<h3>Discordの案内と最低限ルールを確認</h3>": "<h3>Discordの案内と最低限ルールを確認</h3>",
-              "APPLY VIA DISBOARD": "APPLY ON DISCORD",
-              "APPLY ON DISCORD": "APPLY ON DISCORD",
-              "DisboardからDiscord参加へ。": "Discordから参加申請へ。",
-              "Discordから参加申請へ。": "Discordから参加申請へ。",
-              "Disboardの掲載ページからDiscordへ参加し、Discord内で申請方法と募集状況を確認してください。": "申請方法と現在の募集状況はDiscordで案内しています。",
-              "申請方法と現在の募集状況はDiscordで案内しています。": "申請方法と現在の募集状況はDiscordで案内しています。",
-              "AXIS BAYをDisboardで見る": "AXIS BAY Discordへ参加",
-              "AXIS BAY Discordへ参加": "AXIS BAY Discordへ参加",
-              "https://disboard.org/ja/server/1216271639952752691": discord,
-              "https://discord.gg/Mt4EVcdEDQ": discord,
-              "https://discord.com/invite/Mt4EVcdEDQ": discord,
-          }
-
-          for path in [root / "index.html", root / "join.html"]:
-              if not path.exists():
-                  continue
-              text = path.read_text(encoding="utf-8")
-              for before, after in replacements.items():
-                  text = text.replace(before, after)
-              path.write_text(text, encoding="utf-8")
-          PY
+          python3 scripts/patch_site.py
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
