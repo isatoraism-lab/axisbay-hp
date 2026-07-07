@@ -48,11 +48,9 @@ jobs:
             cp -a *.html *.xml *.txt *.webmanifest assets rules dist/ 2>/dev/null || true
           fi
 
-      - name: Apply AXIS BAY public patches
+      - name: Apply public links and rule patches
         shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/patch_site.py
+        run: python3 site_patches/patch_site.py
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
