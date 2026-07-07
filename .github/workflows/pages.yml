@@ -50,7 +50,9 @@ jobs:
 
       - name: Apply public links and rule patches
         shell: bash
-        run: python3 site_patches/patch_site.py
+        run: |
+          python3 site_patches/patch_site.py
+          python3 site_patches/patch_private_doctor.py
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
