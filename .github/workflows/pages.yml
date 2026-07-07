@@ -55,7 +55,7 @@ jobs:
           python3 <<'PY'
           from pathlib import Path
 
-          discord = "https://discord.gg/Mt4EVcdEDQ"
+          discord = "https://discord.com/invite/Mt4EVcdEDQ"
           x_url = "https://x.com/AxisBay89986"
           root = Path("dist")
 
@@ -64,6 +64,8 @@ jobs:
               text = config.read_text(encoding="utf-8")
               text = text.replace('discordUrl: "DISCORD_INVITE_URL_HERE"', f'discordUrl: "{discord}"')
               text = text.replace('discordUrl: "https://disboard.org/ja/server/1216271639952752691"', f'discordUrl: "{discord}"')
+              text = text.replace('discordUrl: "https://discord.gg/Mt4EVcdEDQ"', f'discordUrl: "{discord}"')
+              text = text.replace('discordUrl: "https://discord.com/invite/Mt4EVcdEDQ"', f'discordUrl: "{discord}"')
               text = text.replace('xUrl: "X_URL_HERE"', f'xUrl: "{x_url}"')
               text = text.replace('xUrl: "https://x.com/AxisBay89986"', f'xUrl: "{x_url}"')
               config.write_text(text, encoding="utf-8")
@@ -88,6 +90,7 @@ jobs:
               "AXIS BAYをDisboardで見る": "AXIS BAY Discordへ参加",
               "AXIS BAY Discordへ参加": "AXIS BAY Discordへ参加",
               "https://disboard.org/ja/server/1216271639952752691": discord,
+              "https://discord.gg/Mt4EVcdEDQ": discord,
           }
 
           for path in [root / "index.html", root / "join.html"]:
