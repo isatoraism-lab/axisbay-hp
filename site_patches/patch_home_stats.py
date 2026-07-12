@@ -10,19 +10,12 @@ def main() -> None:
 
     text = path.read_text(encoding="utf-8")
 
-    # ホームの実績表示を更新。HTML構造やCSSは変更せず、表示テキストだけ差し替えます。
-    replacements = {
-        "約30": "34",
-        "約３０": "34",
-        "３０": "34",
-        "30": "34",
-        "犯罪ルート": "犯罪コンテンツ",
-    }
-    for before, after in replacements.items():
-        text = text.replace(before, after)
-
-    # 念のため、全角数字指定にも対応します。
-    text = text.replace("３４", "34")
+    # ホームのWHY AXIS BAY内にある犯罪数表示だけを更新します。
+    # 文字サイズやHTML構造、CSSは変更しません。
+    text = text.replace("<strong>約30</strong><span>犯罪ルート</span>", "<strong>34</strong><span>犯罪コンテンツ</span>")
+    text = text.replace("<strong>約３０</strong><span>犯罪ルート</span>", "<strong>34</strong><span>犯罪コンテンツ</span>")
+    text = text.replace("<strong>３０</strong><span>犯罪ルート</span>", "<strong>34</strong><span>犯罪コンテンツ</span>")
+    text = text.replace("<strong>34</strong><span>犯罪ルート</span>", "<strong>34</strong><span>犯罪コンテンツ</span>")
 
     path.write_text(text, encoding="utf-8")
 
