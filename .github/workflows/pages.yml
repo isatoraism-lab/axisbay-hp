@@ -55,6 +55,7 @@ jobs:
           python3 site_patches/patch_private_doctor.py
           python3 site_patches/patch_home_stats.py
           python3 site_patches/patch_crime_quick_reference.py
+          python3 site_patches/patch_config_crimequick.py
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
